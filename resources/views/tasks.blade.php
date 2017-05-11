@@ -5,7 +5,7 @@
 @if (count($tasks) > 0)
 <div class="panel panel-default">
     <div class="panel-heading">
-        Текущая задача
+        Товари
     </div>
 
     <div class="panel-body">
@@ -13,7 +13,9 @@
 
 	    <!-- Заголовок таблицы -->
 	    <thead>
-            <th>Task</th>
+            <th>Товар</th>
+	    <th>Цена</th>
+	    <th>Удалить</th>
             <th>&nbsp;</th>
 	    </thead>
 
@@ -23,7 +25,12 @@
 		<tr>
 		    <!-- Имя задачи -->
 		    <td class="table-text">
-			<div>{{ $task->name }}</div>
+			<div>{{ $task->name }}
+			    <div class="descript" hidden>{{ $task->descript }}</div>
+			</div>
+		    </td>
+		    <td class="table-text">
+			<div>{{ $task->price }}</div>
 		    </td>
 
 		    <td>
@@ -51,10 +58,26 @@
 	{{ csrf_field() }}
 	<!-- Имя задачи -->
 	<div class="form-group">
-	    <label for="task" class="col-sm-3 control-label">Задача</label>
+	    <label for="task" class="col-sm-3 control-label">Новый товар</label>
 
 	    <div class="col-sm-6">
 		<input type="text" name="name" id="task-name" class="form-control">
+	    </div>
+	</div>
+	<div class="form-group">
+	    <label for="descript" class="col-sm-3 control-label">Описание</label>
+
+	    <div class="col-sm-6">
+		<input type="text" name="descript" id="task-descript" class="form-control">
+	    </div>
+	</div>
+	
+	<!-- Имя задачи -->
+	<div class="form-group">
+	    <label for="price" class="col-sm-3 control-label">Цена</label>
+
+	    <div class="col-sm-6">
+		<input type="text" name="price" id="task-price" class="form-control">
 	    </div>
 	</div>
 
@@ -62,7 +85,7 @@
 	<div class="form-group">
 	    <div class="col-sm-offset-3 col-sm-6">
 		<button type="submit" class="btn btn-default">
-		    <i class="fa fa-plus"></i> Добавить задачу
+		    <i class="fa fa-plus"></i> Добавить новый товар
 		</button>
 	    </div>
 	</div>
